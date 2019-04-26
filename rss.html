@@ -1,0 +1,28 @@
+<html>
+<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
+<body>
+ <div id="con">
+ </div>
+<script src="./rss-parser.min.js"></script>
+<script>
+
+// Note: some RSS feeds can't be loaded in the browser due to CORS security.
+// To get around this, you can use a proxy.
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
+
+let parser = new RSSParser();
+parser.parseURL('https://rsshub.app/zhihu/daily', function(err, feed) {
+  console.log(feed);
+  $("#con").append(feed.lastBuildDate);
+  $("#con").append("<br/>")
+  feed.items.forEach(function(entry) {
+	$("#con").append(entry.title);
+	$("#con").append("<br/>")
+	$("#con").append(entry.content);
+  })
+})
+
+</script>
+</body>
+
+</html>
