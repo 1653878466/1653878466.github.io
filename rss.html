@@ -14,7 +14,7 @@ $("button").click(function(){
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
 var url=$("input").val();
 let parser = new RSSParser();
-parser.parseURL(url, function(err, feed) {
+parser.parseURL(CORS_PROXY + url, function(err, feed) {
   console.log(feed);
   $("#con").append(feed.lastBuildDate);
   $("#con").append("<br/>")
